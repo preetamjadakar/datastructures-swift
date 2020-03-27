@@ -1,28 +1,55 @@
 import UIKit
 
+struct LinkedList<Value> {
+    var head: Node<Value>?
+    var tail: Node<Value>?
+    
+    var isEmpty: Bool {
+        return head == nil
+    }
+    init(){}
+    
+    mutating func push(value:Value) {
+        if isEmpty {
+            head = Node.init(value: value)
+            tail = head
+        } else {
+            head = Node.init(value: value, next: head)
+        }
+    }
+}
+
+extension LinkedList: CustomStringConvertible {
+    var description: String {
+        if isEmpty {
+            return "Linked list is empty"
+        } else {
+            return "\(String.init(describing: head!))"
+        }
+    }
+}
 class Node<Value> {
     var value: Value
-    var reference: Node?
-    init(value: Value, reference:Node? = nil) {
+    var next: Node?
+    init(value: Value, next:Node? = nil) {
         self.value = value
-        self.reference = reference
+        self.next = next
     }
 }
 
 extension Node: CustomStringConvertible {
     var description: String{
-        guard let next = reference else {
+        guard let next = next else {
             return "\(value)"
         }
-        return "\(value) ->  \(next)"
+        return "\(value) ->  \(String.init(describing: next))"
     }
 }
 
-let node1 = Node.init(value: 2)
-let node2 = Node.init(value: 4)
-let node3 = Node.init(value: 6)
 
-node1.reference = node2
-node2.reference = node3
+var list = LinkedList<Int>()
+list.push(value: 2)
+list.push(value: 3)
+list.push(value: 22)
 
-node1
+print(list)
