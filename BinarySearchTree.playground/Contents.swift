@@ -9,7 +9,7 @@ class BinaryNode<Element>{
     }
     
     //left is minimum, if not available then self is minimum
-    var min:BinaryNode {
+    var min:BinaryNode? {
         return leftNode?.min ?? self
     }
 }
@@ -99,9 +99,10 @@ struct BinarySearchTree<Element:Comparable> {
             if node.rightNode == nil {
                 node.leftNode = remove(from: node.leftNode, value: value)
             }
-            node.value = node.min.value
+//            node.value = node.min!.value
             print("deleted value: \(node.value)")
             node.rightNode = remove(from: node.rightNode, value: value)
+            print("new value: \(node.rightNode?.value)")
         } else if value < node.value {
             node.leftNode = remove(from: node.leftNode, value: value)
         } else {
