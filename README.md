@@ -3,6 +3,7 @@
 
 ### BigO notation
 ### Swift implementation for common Data Strucutures
+* Array
 * Stack
 * Queue
 * LinkedList
@@ -21,3 +22,9 @@
    * Bubble Sort
    * Selection Sort
    * Insertion Sort  
+
+ * Common interview coding questions
+   * Check Common Items In Array
+   * Check Sum Of Items In Array
+   * String Reversal
+   * Merge Sorted Arrays
