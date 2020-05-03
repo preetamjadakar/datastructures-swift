@@ -3,9 +3,11 @@ import UIKit
 class Node<Value> {
     var value: Value
     var next: Node?
-    init(value: Value, next:Node? = nil) {
+    weak var prev: Node?
+    init(value: Value, next:Node? = nil, prev:Node? = nil) {
         self.value = value
         self.next = next
+        self.prev = prev
     }
 }
 
@@ -18,15 +20,15 @@ extension Node: CustomStringConvertible {
     }
 }
 
-struct LinkedList<Value> {
+struct DoublyLinkedList<Value> {
     var head: Node<Value>?
     var tail: Node<Value>?
     
     var isEmpty: Bool {
         return head == nil
     }
-
     init(){}
+    
     
     mutating func append(value: Value) {
         if isEmpty {
@@ -34,6 +36,7 @@ struct LinkedList<Value> {
             tail = head
         } else {
             let newNode = Node.init(value: value)
+            newNode.prev = tail
             tail?.next = newNode
             tail = newNode
         }
@@ -45,7 +48,9 @@ struct LinkedList<Value> {
             head = Node.init(value: value)
             tail = head
         } else {
-            head = Node.init(value: value, next: head)
+            let newNode = Node.init(value: value, next: head)
+            head?.prev = newNode
+            head = newNode
         }
     }
     
@@ -56,6 +61,7 @@ struct LinkedList<Value> {
         }
         let deletedNode = head
         head = head?.next
+        head?.prev = nil
         return deletedNode
     }
     
@@ -89,24 +95,27 @@ struct LinkedList<Value> {
         if index == 0 {
             defer {
                 head = head?.next
+                head?.prev = nil
             }
             return head?.value
         } else {
-        var targetNode = head
+        var leaderNode = head
         var iterator = 0
         while head?.next != nil,  iterator < index - 1 {
-            targetNode = targetNode?.next
+            leaderNode = leaderNode?.next
             iterator += 1
         }
+            let followerNode = leaderNode?.next?.next
         //remove node
         defer {
-            targetNode?.next = targetNode?.next?.next
+            leaderNode?.next = followerNode
+            followerNode?.prev = leaderNode
         }
-        return targetNode?.next?.value
+        return leaderNode?.next?.value
         }
     }
-
-    private func getPreviousNode(of index:Int) -> Node<Value>? {
+    
+    func getPreviousNode(of index:Int) -> Node<Value>? {
         var node = head
         var currentIndex = 0
         while node?.next != nil, currentIndex < index-1 {
@@ -124,38 +133,25 @@ struct LinkedList<Value> {
         } else {
             let newNode = Node.init(value: value)
             let leaderNode = getPreviousNode(of: index)
-            
-            newNode.next = leaderNode?.next
+            let follower = leaderNode?.next
+            newNode.next = follower
+            newNode.prev = leaderNode
             leaderNode?.next = newNode
+            follower?.prev = newNode
         }
     }
     
-    //TODO: fix the reversal algo
-     mutating func reverse() {
-        //[5, 3, 2, 9]
-        if head?.next == nil {
-            // just one element so no need to reverse
-            print("do nothing, list is already reversed")
+    mutating func reverse() {
+        var node = head
+        while let currentNode = node {
+            node = currentNode.next
+            swap(&currentNode.next, &currentNode.prev)
+            head = currentNode
         }
-        
-        var firstNode = head // 5
-        tail = head // 5
-        var secondNode = firstNode?.next // 3
-        
-        while (secondNode != nil) { // 3
-            let tempNode = secondNode?.next // "2"
-            secondNode?.next = firstNode //3->5->2->9
-            firstNode = secondNode // "3"
-            secondNode = tempNode // "2"
-        }
-//        head?.next = nil
-        head = firstNode
-        print(head)
-        print(list)
     }
 }
 
-extension LinkedList: CustomStringConvertible {
+extension DoublyLinkedList: CustomStringConvertible {
     var description: String {
         if isEmpty {
             return "Linked list is empty"
@@ -166,7 +162,7 @@ extension LinkedList: CustomStringConvertible {
 }
 
 
-var list = LinkedList<Int>()
+var list = DoublyLinkedList<Int>()
 list.push(value: 2)
 list.push(value: 3)
 list.push(value: 22)
@@ -175,19 +171,18 @@ list.append(value: 1)
 
 list.insert(5, at: 2)
 print(list)
-list.pop()
-print(list)
-list.removeLast()
-print(list)
-list.insert(5, at: 2)
-print(list)
+//list.pop()
+//print(list)
+//list.removeLast()
+//print(list)
+//list.insert(5, at: 2)
+//print(list)
+//
+//list.remove(at: 1)
+//print(list)
+//
+//list.remove(at: 0)
+//print(list)
 
-list.remove(at: 1)
-print(list)
-
-list.remove(at: 0)
-list.append(value: 9)
-print(list)
-
-print("===========================")
-print(list.reverse())
+list.reverse()
+print("list after reversal: \n", list)
