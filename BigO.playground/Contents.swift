@@ -59,6 +59,7 @@ printAllPaires(boxes)
 //Mark:- O(log n) example
 
 var j = 1
+let n = 10000
 while j < n {
   // do constant time stuff
   j *= 2
@@ -74,3 +75,7 @@ func nFactFunc(n: Int) {
     nFactFunc(n: n - 1)
   }
 }
+
+//References:
+//https://www.bigocheatsheet.com/
+//https://stackoverflow.com/questions/487258/what-is-a-plain-english-explanation-of-big-o-notation
