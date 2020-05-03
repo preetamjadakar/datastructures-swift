@@ -32,6 +32,6 @@
    * Merge Sorted Arrays
 
 ### References:
-    * [Master the Coding Interview: Data Structures + Algorithms](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms)
-    * [Data Structures and Algorithms in Swift](https://www.udemy.com/course/data-structures-and-algorithms-in-swift)
-    * [raywenderlich/swift-algorithm-club](https://github.com/raywenderlich/swift-algorithm-club)  
+* [Master the Coding Interview: Data Structures + Algorithms](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms)
+* [Data Structures and Algorithms in Swift](https://www.udemy.com/course/data-structures-and-algorithms-in-swift)
+* [raywenderlich/swift-algorithm-club](https://github.com/raywenderlich/swift-algorithm-club)  
