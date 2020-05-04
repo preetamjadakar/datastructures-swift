@@ -6,13 +6,22 @@ struct Stack<Element> {
     init() {
         
     }
+    
     func isEmpty() -> Bool {
         return storage.isEmpty
     }
+    
+    ///Gives the pick of stack i.e. last element of the array
+    func pick() -> Element? {
+        return storage.last
+    }
+    
+    /// Push the value on to the stack
     mutating func push(element: Element) {
         storage.append(element)
     }
 
+    /// Pop the lastly added item
     mutating func pop() -> Element? {
         guard !storage.isEmpty else {
             print("can't pop empty stack")
@@ -35,14 +44,14 @@ var stack = Stack<Int>()
 stack.push(element: 3)
 stack.push(element: 4)
 stack.push(element: 5)
+stack.push(element: 10)
+stack.push(element: 20)
 print(stack)
 stack.pop()
 print(stack)
 stack.pop()
 print(stack)
-stack.pop()
-print(stack)
-stack.pop()
-print(stack)
-stack.pop()
-print(stack)
+
+
+print(stack.pick() ?? "stack is empty")
+

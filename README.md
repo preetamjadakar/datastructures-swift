@@ -5,8 +5,8 @@
 ### Swift implementation for common Data Strucutures
 * HashTable
 * Array
-* Stack
-* Queue
+* Stack (Using Array | Using LinkedList) 
+* Queue (Using Array | Using LinkedList)
 * LinkedList
 * DoublyLinkedList
 * Tree
