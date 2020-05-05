@@ -26,13 +26,13 @@ struct Queue<Element> {
     func isEmpty() -> Bool {
         return length == 0
     }
-    ///Gives the pick of queue i.e. first element of the list
-    func pick() -> Node<Element>? {
+    ///Gives the peek of queue i.e. first element of the list
+    func peek() -> Node<Element>? {
         return first
     }
     
     /// Push the value in queue i.e. at last
-    mutating func push(_ value:Element) {
+    mutating func enqueue(_ value:Element) {
         let newNode = Node(value)
         if isEmpty() {
             self.first = newNode
@@ -45,7 +45,7 @@ struct Queue<Element> {
     }
     
     /// Pop the firstly added item
-    mutating func pop() -> Node<Element>? {
+    mutating func dequeue() -> Node<Element>? {
         if isEmpty() {
             print("empty Queue can't be popped")
             return nil
@@ -73,11 +73,11 @@ extension Queue: CustomStringConvertible {
 }
 var stack = Queue<String>()
 
-stack.push("google")
-stack.push("facebook")
-stack.push("udemy")
-stack.push("twitter")
+stack.enqueue("google")
+stack.enqueue("facebook")
+stack.enqueue("udemy")
+stack.enqueue("twitter")
 print(stack)
-stack.pop()
+stack.dequeue()
 print(stack)
-print(stack.pick()?.value ?? "Queue is empty")
+print(stack.peek()?.value ?? "Queue is empty")

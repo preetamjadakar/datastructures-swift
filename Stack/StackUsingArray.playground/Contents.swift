@@ -1,18 +1,14 @@
-import UIKit
-
-
 struct Stack<Element> {
-    var storage: [Element] = []
-    init() {
-        
-    }
+    private var storage: [Element] = []
+    
+    init() { }
     
     func isEmpty() -> Bool {
         return storage.isEmpty
     }
     
-    ///Gives the pick of stack i.e. last element of the array
-    func pick() -> Element? {
+    ///Gives the peek of stack i.e. last element of the array
+    func peek() -> Element? {
         return storage.last
     }
     
@@ -53,5 +49,5 @@ stack.pop()
 print(stack)
 
 
-print(stack.pick() ?? "stack is empty")
+print(stack.peek() ?? "stack is empty")
 

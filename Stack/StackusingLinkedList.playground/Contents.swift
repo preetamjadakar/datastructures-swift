@@ -26,8 +26,8 @@ struct Stack<Element> {
     func isEmpty() -> Bool {
         return length == 0
     }
-    ///Gives the pick of stack i.e. lastly added element of the list
-    func pick() -> Node<Element>? {
+    ///Gives the peek of stack i.e. lastly added element of the list
+    func peek() -> Node<Element>? {
         return top
     }
     
@@ -73,7 +73,7 @@ extension Stack: CustomStringConvertible {
     }
 }
 var stack = Stack<String>()
-stack.pick()
+stack.peek()
 
 stack.push("google")
 stack.push("facebook")
