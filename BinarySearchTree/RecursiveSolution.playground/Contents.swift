@@ -1,4 +1,3 @@
-import UIKit
 
 class BinaryNode<Element>{
     var value: Element
@@ -14,23 +13,18 @@ class BinaryNode<Element>{
     }
 }
 
-// This is for display purposes ONLY!!!
+// This is for display purpose.
 extension BinaryNode: CustomStringConvertible {
     public var description: String {
-        return diagram(for: self)
-    }
-    private func diagram(for node: BinaryNode?,
-                         _ top: String = "",
-                         _ root: String = "",
-                         _ bottom: String = "") -> String {
-        guard let node = node else {
-            return root + "nil\n"
-        }
-        if node.leftNode == nil && node.rightNode == nil {
-            return root + "\(node.value)\n"
-        }
-        return diagram(for: node.rightNode,
-                       top + " ", top + "┌──", top + "│ ")
+      var s = ""
+      if let left = leftNode {
+        s += "(\(left.description)) <- "
+      }
+      s += "\(value)"
+      if let right = rightNode {
+        s += " -> (\(right.description))"
+      }
+      return s
     }
 }
 
@@ -79,7 +73,7 @@ struct BinarySearchTree<Element:Comparable> {
         return node
     }
     
-    mutating func remove(_ value: Element){
+    mutating func remove(_ value: Element) {
         root = remove(from: root, value: value)
     }
     
@@ -90,19 +84,15 @@ struct BinarySearchTree<Element:Comparable> {
         
         if value == node.value {
             if node.leftNode == nil, node.rightNode == nil {
-                print("deleted value: \(node.value)")
                 return nil
             }
             if node.leftNode == nil {
-                node.rightNode = remove(from: node.rightNode, value: value)
+                return node.rightNode
             }
             if node.rightNode == nil {
-                node.leftNode = remove(from: node.leftNode, value: value)
+                return node.leftNode
             }
-//            node.value = node.min!.value
-            print("deleted value: \(node.value)")
             node.rightNode = remove(from: node.rightNode, value: value)
-            print("new value: \(node.rightNode?.value)")
         } else if value < node.value {
             node.leftNode = remove(from: node.leftNode, value: value)
         } else {
@@ -123,5 +113,5 @@ print(bst)
 
 print(bst.contains(5))
 print(bst.contains(7))
-print("\(bst.remove(4))")
+bst.remove(4)
 print(bst)
