@@ -131,27 +131,25 @@ struct LinkedList<Value> {
     }
     
     //TODO: fix the reversal algo
-     mutating func reverse() {
+     mutating func reverse() -> Node<Value>? {
         //[5, 3, 2, 9]
         if head?.next == nil {
             // just one element so no need to reverse
             print("do nothing, list is already reversed")
+            return head
         }
-        
-        var firstNode = head // 5
-        tail = head // 5
-        var secondNode = firstNode?.next // 3
-        
-        while (secondNode != nil) { // 3
-            let tempNode = secondNode?.next // "2"
-            secondNode?.next = firstNode //3->5->2->9
-            firstNode = secondNode // "3"
-            secondNode = tempNode // "2"
+
+        var previous:Node<Value>? = nil
+        var currentNode = head
+        var next:Node<Value>? = nil
+
+        while (currentNode != nil) {
+            next = currentNode?.next
+            currentNode?.next = previous
+            previous = currentNode
+            currentNode = next
         }
-//        head?.next = nil
-        head = firstNode
-        print(head)
-        print(list)
+        return previous
     }
 }
 
@@ -190,4 +188,4 @@ list.append(value: 9)
 print(list)
 
 print("===========================")
-print(list.reverse())
+print(list.reverse()!)
