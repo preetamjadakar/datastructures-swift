@@ -5,8 +5,8 @@
 ### Swift implementation for common Data Strucutures
 * HashTable
 * Array
-* Stack
-* Queue
+* Stack (Using Array | Using LinkedList) 
+* Queue (Using Array | Using LinkedList)
 * LinkedList
 * DoublyLinkedList
 * Tree
@@ -24,12 +24,18 @@
    * Bubble Sort
    * Selection Sort
    * Insertion Sort  
+   * Merge Sort  
+   * Quick Sort
 
  * Common interview coding questions
    * Check Common Items In Array
    * Check Sum Of Items In Array
    * String Reversal
    * Merge Sorted Arrays
+   * Queue using stacks
+   * Factorial
+   * Fibonacci Series
+   * Reversing a Linked List
 
 ### References:
 * [Master the Coding Interview: Data Structures + Algorithms](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms)
