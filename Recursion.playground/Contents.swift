@@ -1,6 +1,6 @@
 
 
-/// ecursion only simplifies the algorithm, no ther benefits
+/// recursion only simplifies the algorithm, no other benefits
 /// Sometimes time and space complexity is worst than normal functions
 func factorial(_ number: Int) -> Int {
     //base case
