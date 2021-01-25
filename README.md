@@ -27,7 +27,7 @@
    * Merge Sort  
    * Quick Sort
 
- * Common interview coding questions
+* Common interview coding questions:
    * Check Common Items In Array
    * Check Sum Of Items In Array
    * String Reversal
@@ -36,6 +36,8 @@
    * Factorial
    * Fibonacci Series
    * Reversing a Linked List
+   * Check if given tree is BST
+   * Matching brackets problem
 
 ### References:
 * [Master the Coding Interview: Data Structures + Algorithms](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms)
