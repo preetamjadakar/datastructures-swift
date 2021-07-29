@@ -25,7 +25,7 @@ struct LinkedList<Value> {
     var isEmpty: Bool {
         return head == nil
     }
-
+    
     init(){}
     
     mutating func append(value: Value) {
@@ -105,7 +105,7 @@ struct LinkedList<Value> {
             return targetNode?.next?.value
         }
     }
-
+    
     private func getPreviousNode(of index:Int) -> Node<Value>? {
         var node = head
         var currentIndex = 0
@@ -130,20 +130,19 @@ struct LinkedList<Value> {
         }
     }
     
-    //TODO: fix the reversal algo
-     mutating func reverse() -> Node<Value>? {
+    mutating func reverse() -> Node<Value>? {
         //[5, 3, 2, 9]
         if head?.next == nil {
             // just one element so no need to reverse
             print("do nothing, list is already reversed")
             return head
         }
-
+        
         var previous:Node<Value>? = nil
         var currentNode = head
         tail = currentNode
         var next:Node<Value>? = nil
-
+        
         while (currentNode != nil) {
             next = currentNode?.next
             currentNode?.next = previous
@@ -189,6 +188,8 @@ print(list)
 
 list.remove(at: 0)
 list.append(value: 9)
+list.append(value: 19)
+list.append(value: 29)
 print(list)
 
 print("===========================")
