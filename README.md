@@ -37,7 +37,9 @@
    * Fibonacci Series
    * Reversing a Linked List
    * Check if given tree is BST
-   * Matching brackets problem
+   * Valid Parentheses (Matching brackets problem)
+   * Snakes and Ladders
+   * LRUCache
 
 ### References:
 * [Master the Coding Interview: Data Structures + Algorithms](https://www.udemy.com/course/master-the-coding-interview-data-structures-algorithms)

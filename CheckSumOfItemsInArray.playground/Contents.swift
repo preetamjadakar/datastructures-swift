@@ -28,7 +28,7 @@ print(hasPairWithSum(20, array: array))
 
 //Approach #2
 func hasPairWithSum2(_ sum: Int, array:[Int]) -> Bool {
-    //create a set with difference each array item and sum variable
+    //create a set with difference of each array item and sum variable
     var set = Set<Int>()
     
     for itemInArray in array {

@@ -27,6 +27,11 @@ extension BinaryNode {
         leftChlid?.traversePreOrder(visit)
         rightChild?.traversePreOrder(visit)
     }
+    func inorder() {
+        leftChlid?.inorder()
+        print("\(self.value)", terminator: "\n")
+        rightChild?.inorder()
+    }
 }
 let root = BinaryNode.init(10)
 root.leftChlid = BinaryNode.init(9)
@@ -69,3 +74,5 @@ print("====Pre Order====")
 root.traversePreOrder { (node) in
     print(node.value)
 }
+
+root.inorder()

@@ -8,46 +8,46 @@ func mergeSortedArrays(_ array1:[Int], _ array2:[Int]) -> [Int] {
         return array1
     }
     
-    var item1InArray1:Int? = array1[0]
-    var item1InArray2:Int? = array2[0]
+    var array1IteratorValue:Int? = array1[0]
+    var array2IteratorValue:Int? = array2[0]
     var i = 1
     var j = 1
-    while (item1InArray1 != nil) || (item1InArray2 != nil) {
-        if item1InArray1 == nil {
-            mergedArray.append(item1InArray2!)
+    while (array1IteratorValue != nil) || (array2IteratorValue != nil) {
+        if array1IteratorValue == nil {
+            mergedArray.append(array2IteratorValue!)
             if j < array2.count {
-                item1InArray2 = array2[j]
+                array2IteratorValue = array2[j]
                 j += 1
             } else {
-                item1InArray2 = nil
+                array2IteratorValue = nil
             }
             continue
         }
-        if item1InArray2 == nil {
-            mergedArray.append(item1InArray1!)
+        if array2IteratorValue == nil {
+            mergedArray.append(array1IteratorValue!)
             if i < array1.count {
-                item1InArray1 = array1[i]
+                array1IteratorValue = array1[i]
                 i += 1
             } else {
-                item1InArray1 = nil
+                array1IteratorValue = nil
             }
             continue
         }
-        if item1InArray1! <= item1InArray2! {
-            mergedArray.append(item1InArray1!)
+        if array1IteratorValue! <= array2IteratorValue! {
+            mergedArray.append(array1IteratorValue!)
             if i < array1.count {
-                item1InArray1 = array1[i]
+                array1IteratorValue = array1[i]
                 i += 1
             } else {
-                item1InArray1 = nil
+                array1IteratorValue = nil
             }
         } else {
-            mergedArray.append(item1InArray2!)
+            mergedArray.append(array2IteratorValue!)
             if j < array2.count {
-                item1InArray2 = array2[j]
+                array2IteratorValue = array2[j]
                 j += 1
             } else {
-                item1InArray2 = nil
+                array2IteratorValue = nil
             }
         }
     }

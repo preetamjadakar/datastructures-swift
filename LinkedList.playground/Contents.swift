@@ -92,17 +92,17 @@ struct LinkedList<Value> {
             }
             return head?.value
         } else {
-        var targetNode = head
-        var iterator = 0
-        while head?.next != nil,  iterator < index - 1 {
-            targetNode = targetNode?.next
-            iterator += 1
-        }
-        //remove node
-        defer {
-            targetNode?.next = targetNode?.next?.next
-        }
-        return targetNode?.next?.value
+            var targetNode = head
+            var iterator = 0
+            while head?.next != nil,  iterator < index - 1 {
+                targetNode = targetNode?.next
+                iterator += 1
+            }
+            //remove node
+            defer {
+                targetNode?.next = targetNode?.next?.next
+            }
+            return targetNode?.next?.value
         }
     }
 
@@ -141,6 +141,7 @@ struct LinkedList<Value> {
 
         var previous:Node<Value>? = nil
         var currentNode = head
+        tail = currentNode
         var next:Node<Value>? = nil
 
         while (currentNode != nil) {
@@ -149,6 +150,9 @@ struct LinkedList<Value> {
             previous = currentNode
             currentNode = next
         }
+        head?.next = nil
+        head = previous
+        print(head, tail)
         return previous
     }
 }

@@ -53,6 +53,7 @@ struct Stack<Element> {
         } else {
             if length == 1 { //self.top == self.bottom
                 self.bottom = nil
+                self.top = nil
             }
             defer {
                 self.top = self.top?.next
@@ -68,7 +69,7 @@ extension Stack: CustomStringConvertible {
         if isEmpty() {
             return "Stack is empty"
         } else {
-            return "\(String.init(describing: top!))"
+            return "\(String.init(describing: top ?? nil))"
         }
     }
 }
@@ -77,6 +78,8 @@ stack.peek()
 
 stack.push("google")
 stack.push("facebook")
+print(stack)
+stack.pop()
 print(stack)
 stack.pop()
 print(stack)
