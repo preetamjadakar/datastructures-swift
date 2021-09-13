@@ -14,7 +14,9 @@ class Player {
         return "\(runRate)"
     }
 }
+
 class Batsman: Player {
+    
     override func play() {
         bat()
     }
@@ -22,7 +24,7 @@ class Batsman: Player {
         print("\(name) is batting 🏏")
     }
     override class func whoIam() -> String {
-        return "Batsman"
+        return "Batsman with runrate \(runRate)"
     }
 }
 class Bowler: Player {
@@ -47,28 +49,29 @@ class CricketTeam {
         team.forEach { $0.play() }
     }
 }
-let rohitSharma = Batsman(name: "Rohit Sharma", score: 25)
-print(rohitSharma.score)
-rohitSharma.score = 30
-print(rohitSharma.score)
-
-print("runrate:", Player.runRate)
-Batsman.runRate = 3.1
-print("runrate:", Player.runRate)
-
-let bumrah = Batsman(name: "Jasprit Bumrah", score: 5)
-print(bumrah.score)
-let indianTeam = CricketTeam(name: "India", team: [rohitSharma, bumrah])
-indianTeam.play()
-Bowler.runRate = 5.1
+//let rohitSharma = Batsman(name: "Rohit Sharma", score: 25)
+//print(rohitSharma.score)
+//rohitSharma.score = 30
+//print(rohitSharma.score)
+//
+//print("runrate:", Player.runRate)
+//Batsman.runRate = 3.1
+//print("runrate:", Player.runRate)
+//
+//let bumrah = Batsman(name: "Jasprit Bumrah", score: 5)
+//print(bumrah.score)
+//let indianTeam = CricketTeam(name: "India", team: [rohitSharma, bumrah])
+//indianTeam.play()
+Batsman.runRate = 5.1
 
 Batsman.whoIam()
 print(Bowler.whoIam())
+print(Batsman.whoIam())
 
 
 class BBNClass {
     var temp = 30
- static var bbnValue = 5
+    static var bbnValue = 5
     func makeSomeNoise() {
         BBNClass.bbnValue = 10
         temp = 2
@@ -82,13 +85,14 @@ class BBNChild: BBNClass {
 }
 
 let bbn = BBNClass()
-bbn.makeSomeNoise()
+//bbn.makeSomeNoise()
 print(BBNClass.bbnValue)
 
 let bbn2 = BBNClass()
-bbn2.makeSomeNoise()
+//bbn2.makeSomeNoise()
+print(BBNClass.bbnValue)
 print(bbn2.temp)
 
 let child = BBNChild()
-//child.makeSomeNoise()
+child.makeSomeNoise()
 print(child.temp)

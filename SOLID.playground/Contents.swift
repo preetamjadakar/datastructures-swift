@@ -1,4 +1,4 @@
-///Though we can't precisly say what is GOOD Software design, we can identify whats is the bad design.
+///Though we can't precisly say what is GOOD Software design, we can identify what is the bad design.
 /*
  SIGNS OF A BAD DESIGN:
 
@@ -182,7 +182,6 @@ class Persistance {
  func saveData() {
     //do something
     //catch: log the error
-    URLSessionTask
  }
 }
  protocol Logger {

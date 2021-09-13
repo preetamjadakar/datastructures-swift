@@ -44,7 +44,7 @@ public struct HashTable<Key: Hashable, Value> {
                 return element.value
             }
         }
-        return nil  // key not in hash table
+        return nil  // key not found in hash table
     }
 
     /**
@@ -55,10 +55,11 @@ public struct HashTable<Key: Hashable, Value> {
         let index = self.index(forKey: key)
 
         // Do we already have this key in the bucket?
-        for (i, element) in buckets[index].enumerated() {
+        var bucket = buckets[index]
+        for (i, element) in bucket.enumerated() {
             if element.key == key {
                 let oldValue = element.value
-                buckets[index][i].value = value
+                bucket[i].value = value
                 return oldValue
             }
         }

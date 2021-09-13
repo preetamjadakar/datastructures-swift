@@ -1,10 +1,14 @@
+///Check if given sequence of parantheses is valid
+///Open brackets must be closed by the same type of brackets.
+///Open brackets must be closed in the correct order.
+
 import UIKit
 
-var brackets = "]{{([()])}}"
+var brackets = "{{([()])}}"
 
 func areParanthesisBalanced(_ expressetion: String) -> Bool {
     var stack = [Character]()
-
+    
     for char in brackets {
         switch char {
         case "{", "(", "[":
@@ -12,26 +16,24 @@ func areParanthesisBalanced(_ expressetion: String) -> Bool {
         case "}":
             let top = stack.popLast()
             if top != "{" {
-                print("unbalanced")
                 return false
             }
-            case ")":
+        case ")":
             let top = stack.popLast()
             if top != "(" {
-                print("unbalanced")
                 return false
             }
-            case "]":
+        case "]":
             let top = stack.popLast()
             if top != "[" {
-                print("unbalanced")
                 return false
             }
         default:
             break
         }
     }
+    if stack.count > 0 { return false }
     return true
 }
 
-areParanthesisBalanced(brackets)
+print(areParanthesisBalanced(brackets) ? "Balanced" : "Unbalanced")
