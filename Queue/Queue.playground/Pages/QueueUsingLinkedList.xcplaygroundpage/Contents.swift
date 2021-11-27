@@ -1,3 +1,5 @@
+//: [Previous](@previous)
+
 class Node<Element> {
     var value: Element
     var next: Node?
@@ -81,3 +83,5 @@ print(stack)
 stack.dequeue()
 print(stack)
 print(stack.peek()?.value ?? "Queue is empty")
+
+//: [Next](@next)

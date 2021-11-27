@@ -10,17 +10,19 @@ func findNemo(_ fish:[String]) {
   for i in 0..<fish.count {
     if (fish[i] == "nemo") {
       print("Found NEMO!");
+        break
     }
   }
 
 // modern-style for loop
-  /*
+  
      fish.forEach { fishName in
        if (fishName == "nemo") {
          print("Found NEMO!");
+//        break
        }
      }
- */
+ 
 }
 
 findNemo(everyone)

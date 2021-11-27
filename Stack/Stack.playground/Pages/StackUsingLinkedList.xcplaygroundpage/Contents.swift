@@ -1,7 +1,9 @@
-class Node<Element> {
-    var value: Element
+//: [Previous](@previous)
+
+class Node<ElementType> {
+    var value: ElementType
     var next: Node?
-    init(_ value: Element) {
+    init(_ value: ElementType) {
         self.value = value
         self.next = nil
     }
@@ -16,9 +18,9 @@ extension Node: CustomStringConvertible {
     }
 }
 
-struct Stack<Element> {
-    var top: Node<Element>?
-    var bottom: Node<Element>?
+struct Stack<ElementType> {
+    var top: Node<ElementType>?
+    var bottom: Node<ElementType>?
     var length = 0
     
     init() { }
@@ -27,12 +29,12 @@ struct Stack<Element> {
         return length == 0
     }
     ///Gives the peek of stack i.e. lastly added element of the list
-    func peek() -> Node<Element>? {
+    func peek() -> Node<ElementType>? {
         return top
     }
     
     /// Push the value on to the stack
-    mutating func push(_ value:Element) {
+    mutating func push(_ value:ElementType) {
         let newNode = Node(value)
         if isEmpty() {
             self.top = newNode
@@ -41,12 +43,14 @@ struct Stack<Element> {
             let holdingPointer = self.top
             self.top = newNode
             self.top?.next = holdingPointer
+            // OR //
+            // newNode.next = holdingPointer
         }
         self.length += 1
     }
     
     /// Pop the lastly added item
-    mutating func pop() -> Node<Element>? {
+    mutating func pop() -> Node<ElementType>? {
         if isEmpty() {
             print("empty stack can't be popped")
             return nil
@@ -78,8 +82,11 @@ stack.peek()
 
 stack.push("google")
 stack.push("facebook")
+stack.push("apple")
 print(stack)
 stack.pop()
 print(stack)
 stack.pop()
 print(stack)
+
+//: [Next](@next)

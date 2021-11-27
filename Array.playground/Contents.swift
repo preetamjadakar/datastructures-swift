@@ -1,23 +1,23 @@
 import UIKit
 
-struct MyArray {
+struct MyArray<T>{
     var length:Int
-    var data: [Int:String]
+    var data: [Int:T]
     init() {
         self.length = 0
         self.data = [:]
     }
     
     // get item at index
-    func get(_ itemAtIndex:Int) -> String {
+    func get(_ itemAtIndex:Int) -> T {
         guard let item = data[itemAtIndex] else {
-            return "undefined value"
+            return "undefined value" as! T
         }
         return item
     }
     
     //push the new item
-    @discardableResult mutating func push(item:String) -> Int {
+    @discardableResult mutating func push(item:T) -> Int {
         data[self.length] = item
         defer {
             self.length += 1
@@ -26,7 +26,7 @@ struct MyArray {
     }
     
     //pop the item
-    @discardableResult mutating func pop() -> String? {
+    @discardableResult mutating func pop() -> T? {
         //check if index is valid to avoid index out of range
         guard let index = data.index(forKey: self.length - 1) else {
             return nil
@@ -36,7 +36,7 @@ struct MyArray {
     }
     
     //delete item at index
-    @discardableResult mutating func delete(_ index:Int) -> String? {
+    @discardableResult mutating func delete(_ index:Int) -> T? {
         guard let itemToDelete = self.data[index] else {
             return nil
         }
@@ -62,7 +62,7 @@ extension MyArray: CustomStringConvertible {
     }
 }
 
-var array = MyArray()
+var array = MyArray<String>()
 print(array.get(0))
 
 array.push(item: "first")

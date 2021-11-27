@@ -28,4 +28,4 @@ extension Array where Iterator.Element == Int {
     }
 }
 let numbers = [1,5,6,9,23,38,46,47,89,90,100]
-print(numbers.isContainsUsingBinarySearch(939))
+print(numbers.isContainsUsingBinarySearch(46))

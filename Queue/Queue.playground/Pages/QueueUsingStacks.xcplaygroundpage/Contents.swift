@@ -1,3 +1,5 @@
+//: [Previous](@previous)
+
 // Problem - Statement
 // Use the below give stack and implement the custom Queue
 struct Stack<Element> {
@@ -72,3 +74,5 @@ myQueue.dequeue();
 myQueue.dequeue();
 myQueue.peek()
 print(myQueue)
+
+//: [Next](@next)
